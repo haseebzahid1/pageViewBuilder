@@ -1,11 +1,10 @@
 import 'package:diccoverapp/misc/colors.dart';
-import 'package:diccoverapp/screens/mainScreen.dart';
 import 'package:diccoverapp/widget/buttonWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'appLargeText.dart';
-import 'appText.dart';
+import '../widget/appLargeText.dart';
+import '../widget/appText.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -80,9 +79,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                     visible: index == 2 ? true:false,
                                       child:   ResponsiveButton(btnText: "Go",width: 80,
                                         btnTab:(){
-                                         Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                                         return  MainScreen();
-                                         }));
+                                         // Navigator.of(context).push(MaterialPageRoute(builder: (context){}));
                                         } ,
                                       )
                                   ),

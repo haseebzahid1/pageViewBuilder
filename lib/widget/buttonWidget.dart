@@ -1,5 +1,5 @@
 import 'package:diccoverapp/misc/colors.dart';
-import 'package:diccoverapp/screens/appText.dart';
+import 'package:diccoverapp/widget/appText.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,11 +28,7 @@ class ResponsiveButton extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            imgPath!= null ?
-            Image.asset(imgPath!) :
-            AppText(text:btnText ?? "---", size: 22, color: Colors.white,),
-
+          children: [imgPath!= null ? Image.asset(imgPath!) : AppText(text:btnText ?? "---", size: 22, color: Colors.white,),
           ],
         ),
       ),
