@@ -1,6 +1,7 @@
 import 'package:diccoverapp/screens/welcomePage.dart';
 import 'package:flutter/material.dart';
 
+import 'navpages/detailpage.dart';
 import 'navpages/main_page.dart';
 import 'navpages/my_page.dart';
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainPageState(),
+      home: const DetailPage(),
       // home: const WelcomePage(),
     );
   }

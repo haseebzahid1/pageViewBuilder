@@ -52,7 +52,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             size: 15,color: AppColors.textColor2,),
                         ),
                         const SizedBox(height: 40.0,),
-                        const ResponsiveButton(imgPath: "assets/img/button-one.png",width: 120,),
+                        const ResponsiveButton(width: 120,),
                         Expanded(
                             child: Padding(
                               padding: const EdgeInsets.only(left:30.0,bottom: 40.0),
@@ -75,14 +75,15 @@ class _WelcomePageState extends State<WelcomePage> {
                                     }),
                                   ),
                                   const SizedBox(width: 60.0,),
-                                   Visibility(
-                                    visible: index == 2 ? true:false,
-                                      child:   ResponsiveButton(btnText: "Go",width: 80,
-                                        btnTab:(){
-                                         // Navigator.of(context).push(MaterialPageRoute(builder: (context){}));
-                                        } ,
-                                      )
-                                  ),
+                                  //  Visibility(
+                                  //   visible: index == 2 ? true:false,
+                                  //     child:   ResponsiveButton(btnText: "Go",width: 80,
+                                  //       btnTab:(){
+                                  //        Navigator.of(context).push(MaterialPageRoute(builder: (context){}));
+                                  //       } ,
+                                  //     )
+                                  // ),
+                                  ResponsiveButton(isResponsive: true,),
                                 ],
                               ),
                             )
