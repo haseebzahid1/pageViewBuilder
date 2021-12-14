@@ -1,4 +1,5 @@
 import 'package:diccoverapp/misc/colors.dart';
+import 'package:diccoverapp/navpages/mainScreen.dart';
 import 'package:diccoverapp/widget/buttonWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -52,45 +53,42 @@ class _WelcomePageState extends State<WelcomePage> {
                             size: 15,color: AppColors.textColor2,),
                         ),
                         const SizedBox(height: 40.0,),
-                        const ResponsiveButton(width: 120,),
+                         InkWell(
+                           onTap: (){
+                             Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainScreen()));
+                           },
+                             child: ResponsiveButton(width: 120,)
+                         ),
                         Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left:30.0,bottom: 40.0),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: List.generate(3, (indexx){
-                                      return Container(
-                                        margin: EdgeInsets.only(left: 9),
-                                        width:index == indexx?30:16,
-                                        height: 16 ,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8.0),
-                                          color:index == indexx?Colors.red:Colors.orange,
-                                        ),
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 30),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: List.generate(3, (indexx){
+                                    return Container(
+                                      margin: EdgeInsets.only(left: 9),
+                                      width:index == indexx?30:16,
+                                      height: 16 ,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        color:index == indexx?Colors.red:Colors.orange,
+                                      ),
 
-                                      );
-                                    }),
-                                  ),
-                                  const SizedBox(width: 60.0,),
-                                  //  Visibility(
-                                  //   visible: index == 2 ? true:false,
-                                  //     child:   ResponsiveButton(btnText: "Go",width: 80,
-                                  //       btnTab:(){
-                                  //        Navigator.of(context).push(MaterialPageRoute(builder: (context){}));
-                                  //       } ,
-                                  //     )
-                                  // ),
-                                  ResponsiveButton(isResponsive: true,),
-                                ],
-                              ),
-                            )
+                                    );
+                                  }),
+                                ),
+
+                              ],
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                    const SizedBox(width: 80.0,),
+                     SizedBox(width: 80.0,),
                     Column(children: List.generate(3,(indexDots){
                           return Container(
                             margin: const EdgeInsets.only(bottom: 8.0),

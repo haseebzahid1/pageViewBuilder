@@ -1,8 +1,11 @@
 import 'package:diccoverapp/misc/colors.dart';
+import 'package:diccoverapp/modals/imgListItem.dart';
 import 'package:diccoverapp/widget/appLargeText.dart';
 import 'package:diccoverapp/widget/appText.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'detailpage.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -32,7 +35,12 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children:  [
-                  Icon(Icons.menu,size: 30,color: Colors.black,),
+                  IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    iconSize: 30.0,
+                    color: Colors.black,
+                    onPressed: () => Navigator.pop(context),
+                  ),
                   // Expanded(child: Container()),
                   Container(
                     width: 50,
@@ -63,7 +71,7 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
                   unselectedLabelColor: Colors.grey,
                   isScrollable: true,
                   controller: _tabController,
-                  indicator:CircleTabIndicator(color: AppColors.mainColor, radius: 4) ,
+                  // indicator:CircleTabIndicator(color: AppColors.mainColor, radius: 4) ,
                   tabs: const [
                     Tab(text: "Places"),
                     Tab(text: "Inspiration",),
@@ -80,23 +88,31 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
                 controller: _tabController,
                 children:  [
                   ListView.builder(
-                    itemCount:3,
-                      physics:BouncingScrollPhysics(),
+                    itemCount: blogLists.length,
                     scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index){
-                      return Container(
-                        width: 200,
-                        margin: EdgeInsets.only(right: 20,top: 10),
-                        // height: 300,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                          image: const DecorationImage(
-                            image: AssetImage("assets/img/mountain.jpeg",),fit: BoxFit.cover,
+                      physics: BouncingScrollPhysics(),
+                      itemBuilder: (context, index){
+                      BlogImage ListImgBlog = blogLists[index];
+                      return InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DetailPage(
+                              blogImgPath:ListImgBlog,
+                          )));
+                        },
+                        child: Container(
+                          width: 200,
+                          margin: EdgeInsets.only(right: 20,top: 10),
+                          // height: 300,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            image:  DecorationImage(
+                              image: AssetImage(ListImgBlog.imageUrl),fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       );
-                    }
+                      },
                   ),
                   Text("There"),
                   Text("By"),
@@ -161,30 +177,30 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin{
     );
   }
 }
+//
+// class CircleTabIndicator extends Decoration{
+//   final Color color;
+//   double radius;
+//   CircleTabIndicator({required this.color , required this.radius});
+//   @override
+//   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
 
-class CircleTabIndicator extends Decoration{
-  final Color color;
-  double radius;
-  CircleTabIndicator({required this.color , required this.radius});
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    // TODO: implement createBoxPainter
-    return _CirclePainter(radius: radius, color: color);
-  }
-
-}
-
-class _CirclePainter extends BoxPainter{
-  final Color color;
-  double radius;
-  _CirclePainter({required this.color , required this.radius});
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
-    Paint _paint = Paint();
-    _paint.color=color;
-    _paint.isAntiAlias = true;
-    final Offset circleoOffset = Offset(configuration.size!.width/2 -radius/2 , configuration.size!.height);
-    canvas.drawCircle(offset+circleoOffset, radius, _paint );
-  }
-
-}
+//     return _CirclePainter(radius: radius, color: color);
+//   }
+//
+// }
+//
+// class _CirclePainter extends BoxPainter{
+//   final Color color;
+//   double radius;
+//   _CirclePainter({required this.color , required this.radius});
+//   @override
+//   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+//     Paint _paint = Paint();
+//     _paint.color=color;
+//     _paint.isAntiAlias = true;
+//     final Offset circleoOffset = Offset(configuration.size!.width/2 -radius/2 , configuration.size!.height);
+//     canvas.drawCircle(offset+circleoOffset, radius, _paint );
+//   }
+//
+// }

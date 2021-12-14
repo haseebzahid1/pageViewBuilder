@@ -1,4 +1,5 @@
 import 'package:diccoverapp/misc/colors.dart';
+import 'package:diccoverapp/modals/imgListItem.dart';
 import 'package:diccoverapp/widget/appLargeText.dart';
 import 'package:diccoverapp/widget/appText.dart';
 import 'package:diccoverapp/widget/app_button.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
-
+  final BlogImage blogImgPath;
+  const DetailPage({Key? key, required this.blogImgPath,  }) : super(key: key);
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
@@ -31,9 +32,9 @@ class _DetailPageState extends State<DetailPage> {
                 child: Container(
                   width: double.maxFinite,
                   height: 350,
-                  decoration: const BoxDecoration(
+                  decoration:  BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/img/mountain.jpeg"),fit: BoxFit.cover,
+                      image: AssetImage(widget.blogImgPath.imageUrl),fit: BoxFit.cover,
                     ),
                   ),
 
@@ -67,8 +68,8 @@ class _DetailPageState extends State<DetailPage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        AppLargeApp(text: "Yosemite",color: Colors.black.withOpacity(0.8),),
-                        AppLargeApp(text: "\$ 250",color: AppColors.mainColor),
+                        AppLargeApp(text: widget.blogImgPath.imgTitle,color: Colors.black.withOpacity(0.8),),
+                        AppLargeApp(text: "\$ ${widget.blogImgPath.price}",color: AppColors.mainColor),
                       ],
                     ),
                     const SizedBox(height: 10,),
@@ -137,7 +138,22 @@ class _DetailPageState extends State<DetailPage> {
                     ),
                   ],
                 ),
-            )
+            ),
+            Positioned(
+              top: 40,
+                left: 20,
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      iconSize: 30.0,
+                      color: Colors.black,
+                      onPressed: () => Navigator.pop(context),
+                    ),
+
+                  ],
+                ),
+            ),
           ],
         ),
       ),
