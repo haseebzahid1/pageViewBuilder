@@ -34,11 +34,6 @@ class _MainPageStateState extends State<MainPageState> {
           selectedFontSize: 0,   ///note
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          // onTap: (int index){
-          //   setState(() {
-          //     currentIndex = index;
-          //   });
-          // },
           onTap: onTab,
           currentIndex: currentIndex,
           selectedItemColor: Colors.black54,
@@ -52,6 +47,11 @@ class _MainPageStateState extends State<MainPageState> {
             BottomNavigationBarItem(label: "Search",icon:Icon(Icons.search)),
             BottomNavigationBarItem(label: "My",icon:Icon(Icons.person)),
           ],
+          // onTap: (int index){
+          //   setState(() {
+          //     currentIndex = index;
+          //   });
+          // },
         )
     );
   }

@@ -13,7 +13,6 @@ class DetailPage extends StatefulWidget {
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
-
 class _DetailPageState extends State<DetailPage> {
   final int gottenStars=4;
    int selectedIndex=-1;
